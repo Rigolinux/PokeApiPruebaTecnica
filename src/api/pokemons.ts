@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { client } from "./axios";
 import { PokemonSimpleL } from "../types/pokemon";
 // Get all pokemons
@@ -33,8 +34,23 @@ export const getAllPokemonsLight = async (): Promise<PokemonSimpleL[]> => {
 export const getPokemon = async (name: string) => {
   try {
     const response = await client.get(`/pokemon/${name}`);
+    console.log("response", response.data);
     return response.data;
   } catch (error) {
     console.error(error);
   }
+};
+
+//get pokemon by id
+export const getPokemonById = async (id: number) => {
+    try {
+        const response = await client.get(`/pokemon/${id}`);
+        return response.data;
+    } catch (error) {
+        //if the pokemon is not found, redirect to to not found page
+        console.error("Error fetching Pokémon:", error);
+        if ((error as any).response.status === 404) {
+            window.location.href = "/not-found";
+        }
+    }    
 };
