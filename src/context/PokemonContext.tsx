@@ -31,13 +31,13 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
 
   const customOffset = useCallback(async () => {
     try {
-      console.log("customOffset", filteredPokemons);
+
       const start = (currentPage - 1) * 25;
       const end = currentPage * 25;
       const promises: Promise<Pokemons>[] = (filteredPokemons as Pokemons[]).slice(start, end).map((pokemon: Pokemons) => {
         return getPokemon(pokemon.name);
       });
-      console.log("promises", promises);
+    
       const data = await Promise.all(promises);
       setPokemons(data);
     } catch (error) {
@@ -86,6 +86,10 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const filterPokemons = async () => {
+
+    if(search == '')
+      return;
+
     setIsFiltered(true);
     setCurrentPage(1);
     setOffset((currentPage - 1) * 25);
@@ -97,7 +101,7 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
     const promises: Promise<Pokemons>[] = filtered.slice(0, 25).map((pokemon: Pokemons) => {
       return getPokemon(pokemon.name);
     });
-    console.log("promises", promises);
+   
     setMaxOffset(Math.ceil(filtered.length / 25));
 
     const data = await Promise.all(promises);
