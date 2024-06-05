@@ -1,7 +1,6 @@
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
 import { Home,About,BasicForm } from './pages'
 import { Navigation } from './components'
-import './App.css'
 
 function App() {
 
