@@ -18,6 +18,16 @@ export const getAllPokemons = async (Offset: number = 0) => {
   }
 };
 
+export const getAllPokemonsLight = async (): Promise<PokemonSimpleL[]> => {
+    try {
+        const response = await client.get(`/pokemon?limit=10000`);
+        return response.data.results;
+    } catch (error) {
+        console.error(error);
+        return []; 
+    }
+};
+
 
 // Get a single pokemon information
 export const getPokemon = async (name: string) => {
