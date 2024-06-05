@@ -86,6 +86,44 @@
   }
 }
 
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.stat-label {
+  width: 100px; /* Ajusta según sea necesario */
+  text-align: right;
+  margin-right: 10px;
+}
+
+.progress-bar {
+  width: 200px; /* Ajusta según sea necesario */
+  height: 20px; /* Ajusta según sea necesario */
+  background-color: #ddd; /* Color de fondo de la barra de progreso */
+  border-radius: 5px; /* Añade bordes redondeados */
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #4caf50; /* Color de la barra de progreso */
+  border-radius: 5px; /* Añade bordes redondeados */
+}
+
+
+.counter-stat {
+  margin-left: 10px;
+}
+
+
+
 
 .card-pokemon {
 	cursor: pointer;
