@@ -32,7 +32,7 @@ const Pagination = () => {
 
     for (let i = startPage; i <= endPage; i++) {
       pageNumbers.push(
-        <button key={i} className={'mx-3 border-lg border px-3 ' + (currentPage === i ? 'border-cyan-800' : 'border-cyan-400')} onClick={() => setPage(i)} disabled={i === currentPage}>
+        <button key={i} className={'mx-3 border-lg border px-3 text-white ' + (currentPage === i ? 'bg-cyan-800' : 'bg-cyan-600')} onClick={() => setPage(i)} disabled={i === currentPage}>
           {i}
         </button>
       );
@@ -43,17 +43,17 @@ const Pagination = () => {
 
   return (
     <div className="pagination">
-      <button className='btn m-3 h-12 w-12 text-white bg-slate-800 p-3 rounded-full disabled:bg-slate-600' disabled={currentPage <= 5} onClick={jumpBackward}>
+      <button className='btn m-3 h-12 w-12 text-white hover:bg-blue-400 bg-blue-600 p-3 rounded-full disabled:bg-blue-200' disabled={currentPage <= 5} onClick={jumpBackward}>
         {'<<'}
       </button>
-      <button className='btn m-3 h-12 w-12 text-white bg-slate-800 p-3 rounded-full disabled:bg-slate-600' disabled={currentPage === 1} onClick={prevPage}>
+      <button className='btn m-3 h-12 w-12 text-white hover:bg-blue-400 bg-blue-600 p-3 rounded-full disabled:bg-blue-200' disabled={currentPage === 1} onClick={prevPage}>
         {'<'}
       </button>
       {renderPagination()}
-      <button className='btn m-3 h-12 w-12 text-white bg-slate-800 p-3 rounded-full disabled:bg-slate-600' disabled={currentPage === maxOffset} onClick={nextPage}>
+      <button className='btn m-3 h-12 w-12 text-white  hover:bg-blue-400 bg-blue-600 p-3 rounded-full disabled:bg-blue-200' disabled={currentPage === maxOffset} onClick={nextPage}>
         {'>'}
       </button>
-      <button className='btn m-3 h-12 w-12 text-white bg-slate-800 p-3 rounded-full disabled:bg-slate-600' disabled={currentPage + 5 > maxOffset} onClick={jumpForward}>
+      <button className='btn m-3 h-12 w-12 text-white  hover:bg-blue-400 bg-blue-600 p-3 rounded-full disabled:bg-blue-200' disabled={currentPage + 5 > maxOffset} onClick={jumpForward}>
         {'>>'}
       </button>
     </div>
