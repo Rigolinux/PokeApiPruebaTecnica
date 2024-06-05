@@ -1,3 +1,3 @@
-export * from './PokemonDetail';
 export * from './Home';
-export * from './Formik';
+export { default as NotFound } from './NotFound';
+export * from './PokemonDetail';
