@@ -14,9 +14,10 @@ export const Home = () => {
 
   return (
     <>
-      <h1 className="text-4xl text-center font-bold">Poke-Api</h1>
-        <Pagination />
-        <Search />
+      <h1 className="text-4xl text-center font-bold">Poke-Api-PruebaTecnica</h1>
+      <div className='flex  justify-end md:mr-12'>  
+          <Search />
+      </div>  
       <div className="flex  justify-center mt-5">
         <div className="container card-list-pokemon">
           {Array.isArray(pokemons) && pokemons.map((pokemon, index) => (
@@ -25,6 +26,9 @@ export const Home = () => {
             </div>
           ))}
         </div>
+      </div>
+      <div className="flex justify-center mt-5">
+          <Pagination />
       </div>
     </>
   );
