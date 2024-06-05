@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import { getAllPokemons, getAllPokemonsLight, getPokemon } from '../api/pokemons';
+import { getAllPokemons, getAllPokemonsLight, getPokemon,getPokemonById } from '../api/pokemons';
 import { Pokemons } from '../types/pokemon';
 
 interface PokemonContextProps {
@@ -12,6 +12,8 @@ interface PokemonContextProps {
   filterPokemons: (search: string) => void;
   search: string;
   setSearch: (search: string) => void;
+  selectOnePokemon: (id: number) => void;
+  selectedPokemon: Pokemons | [] | unknown;
 }
 
 export const PokemonContext = createContext<PokemonContextProps | undefined>(undefined);
@@ -25,6 +27,7 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
   const [search, setSearch] = useState('');
   const [isFiltered, setIsFiltered] = useState(false);
   const [filteredPokemons, setFilteredPokemons] = useState<Pokemons | [] | unknown>([]);
+  const [selectedPokemon, setSelectedPokemon] = useState<Pokemons | null>(null);
 
   const customOffset = useCallback(async () => {
     try {
@@ -88,7 +91,7 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
     setOffset((currentPage - 1) * 25);
 
     const filtered = (pokemonsComplete as Pokemons[]).filter((pokemon: Pokemons) => {
-      return pokemon.name.includes(search);
+      return pokemon.name.includes(search.toLowerCase());
     });
     setFilteredPokemons(filtered);
     const promises: Promise<Pokemons>[] = filtered.slice(0, 25).map((pokemon: Pokemons) => {
@@ -101,6 +104,20 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
     setPokemons(data);
   };
 
+  const selectOnePokemon = async (id: number) => {
+    try{
+        const pokemon = await getPokemonById(id);
+        setSelectedPokemon(pokemon);
+
+    }
+    catch (error) {
+        //if the pokemon is not found, send to the 404 page
+
+
+        console.error('Error fetching Pokémon:', error);
+    }
+  };
+
   useEffect(() => {
     if (!search) {
       setIsFiltered(false);
@@ -110,7 +127,7 @@ export const PokemonProvider = ({ children }: { children: ReactNode }) => {
   }, [search]);
 
   return (
-    <PokemonContext.Provider value={{ pokemons, currentPage, maxOffset, nextPage, prevPage, setPage, filterPokemons, search, setSearch }}>
+    <PokemonContext.Provider value={{ pokemons, currentPage, maxOffset, nextPage, prevPage, setPage, filterPokemons, search, setSearch, selectOnePokemon, selectedPokemon }}>
       {children}
     </PokemonContext.Provider>
   );
