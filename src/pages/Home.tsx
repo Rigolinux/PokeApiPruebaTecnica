@@ -20,7 +20,7 @@ export const Home = () => {
       <div className="flex  justify-center mt-5">
         <div className="container card-list-pokemon">
           {Array.isArray(pokemons) && pokemons.map((pokemon, index) => (
-            <div key={index}>
+            <div key={index} className='parent-shadow border border-gray-200 rounded-lg shadow'>
               <PokemonCard pokemon={pokemon} />
             </div>
           ))}
