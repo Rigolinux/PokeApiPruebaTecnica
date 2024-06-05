@@ -1,5 +1,5 @@
 import { BrowserRouter,Routes,Route } from 'react-router-dom'
-import { Home,Pokemon,BasicForm } from './pages'
+import { Home,Pokemon,NotFound } from './pages'
 
 import { PokemonProvider  } from './context/PokemonContext';
 function App() {
@@ -11,8 +11,10 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<Pokemon />} />
-            <Route path="/form" element={<BasicForm />} />
+            <Route path="/pokemon/:id" element={<Pokemon />} />
+            <Route path="*" element={<NotFound />} />
+
+       
           </Routes>   
         </BrowserRouter>
      </PokemonProvider>
