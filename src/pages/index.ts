@@ -1,3 +1,3 @@
-export * from './About';
+export * from './PokemonDetail';
 export * from './Home';
 export * from './Formik';
