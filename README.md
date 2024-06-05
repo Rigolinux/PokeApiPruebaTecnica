@@ -1,30 +1,38 @@
-# React + TypeScript + Vite
+# Poke Api Prueba Tecnica
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esta es una aplicación de búsqueda de Pokémon que permite a los usuarios buscar Pokémon por nombre. La aplicación utiliza React y Context API para la gestión del estado.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Búsqueda de Pokémon por nombre.
+- Filtrado de resultados en tiempo real con debounce para optimizar la búsqueda.
+- Interfaz de usuario simple y fácil de usar.
+- Redireccionamiento de paginas.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Instalación
 
-- Configure the top-level `parserOptions` property like this:
+Sigue estos pasos para instalar y ejecutar la aplicación en tu entorno local.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+1. Clona el repositorio:
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+    ```bash
+    git clone https://github.com/Rigolinux/PokeApiPruebaTecnica.git
+    ```
+
+2. Navega al directorio del proyecto:
+
+    ```bash
+    cd PokeApiPruebaTecnicap
+    ```
+
+3. Instala las dependencias:
+
+    ```bash
+    npm install
+    ```
+4. Ejecutar el proyecto:
+
+    ```bash
+    npm run dev
+    ```
